@@ -1,18 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="contend">
+    <component :is="componentName" />
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import { mapGetters, mapActions } from "vuex";
+import Loading from "@/components/elements/loading/Loading.vue";
+import ListProducts from "@/components/list/ListProducts.vue";
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    Loading,
+    ListProducts,
+  },
+  data() {
+    return {
+      componentName: "Loading",
+    };
+  },
+  computed: {
+    ...mapGetters("Pokemons", ["loading", "success"]),
+  },
+  mounted() {
+    this.getProducts();
+    setTimeout(
+      function () {
+        if (!this.loading.getItems && this.success.getItems) {
+          this.componentName = "ListProducts";
+        }
+      }.bind(this),
+      2000
+    );
+  },
+  methods: {
+    ...mapActions("Pokemons", ["getProducts"]),
   },
 };
 </script>
+<style scoped>
+.contend {
+  overflow-x: hidden;
+}
+</style>
