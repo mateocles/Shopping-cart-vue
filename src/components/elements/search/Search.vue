@@ -30,7 +30,7 @@
       </b-col>
       <b-col class="cart"
         ><router-link class="link" to="/cart"
-          ><span>3</span><b-icon icon="cart2" font-scale="2"></b-icon>
+          ><span v-if="productsCart.length >0 ">{{productsCart.length}}</span><b-icon icon="cart2" font-scale="2"></b-icon>
         </router-link>
       </b-col>
     </b-row>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Search",
   data() {
@@ -46,11 +46,13 @@ export default {
       searchInput: "",
     };
   },
-  computed: {},
+  computed: {
+    ...mapGetters("Cart", ["productsCart", "loading"]),
+  },
   methods: {
     ...mapActions("Products", ["getProducts"]),
     searchProduct() {
-      if (this.searchInput != "") {        
+      if (this.searchInput != "") {
         this.$router.push({ path: "/" }).catch(() => {});
         this.getProducts(this.searchInput);
       }

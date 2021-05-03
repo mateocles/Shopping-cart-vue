@@ -17,10 +17,8 @@ const getters = {
 };
 
 const actions = {
-  addProducts({ commit }, payload) {
-    commit("loading", true);
-    console.log(payload);
-    commit("loading", false);
+  addProduct({ commit }, payload) {
+    commit("addProductResponse",payload)
   },
 };
 
@@ -28,7 +26,7 @@ const mutations = {
   loading(state, payload) {
     state.loading.getItems = payload;
   },
-  addProductsResponse(state, data) {
+  addProductResponse(state, data) {
     state.productsCart.push(data);
   },
 };

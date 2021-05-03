@@ -1,29 +1,16 @@
 <template>
-  <div>
-    <b-skeleton-wrapper :loading="loading.getItems" class="contend-page">
-      <template #loading>
-        <b-row>
-          <b-col md="6" offset-md="3">
-            <b-card>
-              <b-skeleton width="85%"></b-skeleton>
-              <b-skeleton width="55%"></b-skeleton>
-              <b-skeleton width="70%"></b-skeleton>
-            </b-card>
-          </b-col>
-        </b-row>
-      </template>
-      <div v-if="productsCart.length > 0" class="contend-page">
-        <b-row>
-          <b-col md="6" offset-md="3"
-            ><div v-for="(data, i) in items" :key="i">
-              <Card :item="data" type="cart" /></div
-          ></b-col>
-        </b-row>
-      </div>
-      <div v-else class="contend-page">
-        <Error msg="No encontro ningun producto" />
-      </div>
-    </b-skeleton-wrapper>
+  <div class="contend-page">
+    <div v-if="productsCart.length > 0" class="contend-page">
+      <b-row>
+        <b-col md="6" offset-md="3"
+          ><div v-for="(data, i) in items" :key="i">
+            <Card :item="data" type="cart" /></div
+        ></b-col>
+      </b-row>
+    </div>
+    <div v-else class="contend-page">
+      <Error msg="No encontro ningun producto en el carrito" />
+    </div>
   </div>
 </template>
 

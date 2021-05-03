@@ -6,7 +6,7 @@
         <p class="sub-title">No se ha encontrado!</p>
       </div>
       <div class="contend-btn">
-        <b-button pill variant="warning" class="button" @click="pokedex()"
+        <b-button pill variant="warning" class="button" @click="home()"
           >Go back home</b-button
         >
       </div>
@@ -22,8 +22,7 @@ export default {
   },
 
   methods: {
-    pokedex() {
-      this.$store.dispatch("Pokemons/searchAllPokemons");
+    home() {
       this.$router.push({ path: "/" }).catch(() => {});
     },
   },

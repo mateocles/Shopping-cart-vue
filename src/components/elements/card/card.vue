@@ -20,12 +20,12 @@
             <b-button
               v-if="type == 'listProduct'"
               variant="primary"
-              @click="update(item)"
+              @click="addProduct(item)"
               >Agregar al carrito</b-button
             ><b-button
               v-if="type == 'cart'"
               variant="danger"
-              @click="update(item)"
+              @click="deletProduct(item)"
               >Eliminar al carrito</b-button
             >
           </b-col>
@@ -44,7 +44,13 @@ export default {
     type: String,
   },
   methods: {
-    ...mapActions("Product", [""]),
+    ...mapActions("Cart", ["addProduct"]),
+    addProduct(data) {
+      console.log(data);
+    },
+    deletProduct(data) {
+      console.log(data);
+    },
   },
 };
 </script>
