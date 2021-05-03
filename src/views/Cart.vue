@@ -9,15 +9,14 @@
               <b-skeleton width="55%"></b-skeleton>
               <b-skeleton width="70%"></b-skeleton>
             </b-card>
-            </b-col
-          >
+          </b-col>
         </b-row>
       </template>
-      <div v-if="items.length > 0" class="contend-page">
+      <div v-if="productsCart.length > 0" class="contend-page">
         <b-row>
           <b-col md="6" offset-md="3"
             ><div v-for="(data, i) in items" :key="i">
-              <Card :item="data" type="listProduct"/></div
+              <Card :item="data" type="cart" /></div
           ></b-col>
         </b-row>
       </div>
@@ -27,6 +26,7 @@
     </b-skeleton-wrapper>
   </div>
 </template>
+
 <script>
 import { mapGetters } from "vuex";
 import Card from "@/components/elements/card/card.vue";
@@ -44,7 +44,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("Products", ["items", "loading"]),
+    ...mapGetters("Cart", ["productsCart", "loading"]),
   },
 };
 </script>

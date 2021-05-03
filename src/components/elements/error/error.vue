@@ -6,7 +6,7 @@
         <p class="sub-title">No se ha encontrado!</p>
       </div>
       <div class="contend-btn">
-        <b-button pill variant="danger" class="button" @click="pokedex()"
+        <b-button pill variant="warning" class="button" @click="pokedex()"
           >Go back home</b-button
         >
       </div>
@@ -33,27 +33,6 @@ export default {
 <style scoped>
 .contend-btn {
   text-align: center;
-}
-.button {
-  width: 155px;
-  height: 44px;
-  left: 499px;
-  top: 243px;
-  background: #f22539;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: bold;
-}
-.button:hover {
-  width: 155px;
-  height: 44px;
-  left: 499px;
-  top: 243px;
-  background: #c00e20;
-  border-radius: 60px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: bold;
 }
 .title {
   height: 43px;

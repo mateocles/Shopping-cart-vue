@@ -3,8 +3,7 @@ import { setMessage } from "../../common/Utils/Message";
 
 const state = {
   items: [],
-  loading: { getItems: false },
-  success: { getItems: undefined },
+  loading: { getItems: true },
 };
 
 const getters = {
@@ -20,70 +19,18 @@ const getters = {
 };
 
 const actions = {
-  getPokemons({ commit }) {
+  getProducts({ commit }, payload) {
     commit("loading", true);
     Api.get(
-      "pokemon",
+      `/sites/MLA/search?q=:${payload}`,
       async (functions) => {
         const response = await functions;
-        commit("getPokemonsResponse", { response });
         commit("loading", false);
+        commit("getProductsResponse", { response });
       },
       async (functions) => {
         const response = await functions;
-        setMessage(
-          "Error",
-          `Ha sucedido un error en la transacción ${response}`,
-          "error"
-        );
-      }
-    );
-  },
-  searchAllPokemons({ commit }) {
-    commit("searchAllPokemons");
-  },
-  deletPokemon({ commit }, payload) {
-    commit("loading", true);
-    Api.get(`pokemon/delete/${payload._id}`, async (functions) => {
-      const response = await functions;
-      if (response.status == 200) {
         commit("loading", false);
-      }
-    });
-    commit("loading", false);
-  },
-  async addPokemon({ commit }, payload) {
-    await Api.post(
-      payload,
-      "pokemon/add",
-      async (functions) => {
-        const resp = await functions;
-        if (resp.status == 200) {
-          commit("loading", false);
-        }
-      },
-      async (functions) => {
-        const response = await functions;
-        setMessage(
-          "Error",
-          `Ha sucedido un error en la transacción ${response}`,
-          "error"
-        );
-      }
-    );
-  },
-  async updatePokemon({ commit }, payload) {
-    await Api.post(
-      payload,
-      `pokemon/update/${payload.id}`,
-      async (functions) => {
-        const resp = await functions;
-        if (resp.status == 200) {
-          commit("loading", false);
-        }
-      },
-      async (functions) => {
-        const response = await functions;
         setMessage(
           "Error",
           `Ha sucedido un error en la transacción ${response}`,
@@ -95,16 +42,11 @@ const actions = {
 };
 
 const mutations = {
-  searchAllPokemons(state) {
-    state.allPokemons = !state.allPokemons;
-    state.favoritePokemons = !state.favoritePokemons;
+  loading(state, payload) {
+    state.loading.getItems = payload;
   },
-  loading(state, data) {
-    state.loading.getItems = data;
-    state.success.getItems = !data;
-  },
-  getPokemonsResponse(state, data) {
-    state.items = data.response.data;
+  getProductsResponse(state, data) {
+    state.items = data.response.data.results;
   },
 };
 

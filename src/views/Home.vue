@@ -4,36 +4,20 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from "vuex";
-import Loading from "@/components/elements/loading/Loading.vue";
+import { mapActions } from "vuex";
 import ListProducts from "@/components/list/ListProducts.vue";
 export default {
   name: "Home",
   components: {
-    Loading,
     ListProducts,
   },
   data() {
     return {
-      componentName: "Loading",
+      componentName: "ListProducts",
     };
   },
-  computed: {
-    ...mapGetters("Pokemons", ["loading", "success"]),
-  },
-  mounted() {
-    this.getProducts();
-    setTimeout(
-      function () {
-        if (!this.loading.getItems && this.success.getItems) {
-          this.componentName = "ListProducts";
-        }
-      }.bind(this),
-      2000
-    );
-  },
   methods: {
-    ...mapActions("Pokemons", ["getProducts"]),
+    ...mapActions("Products", ["getProducts"]),
   },
 };
 </script>
