@@ -3,7 +3,7 @@ import { setMessage } from "../../common/Utils/Message";
 
 const state = {
   items: [],
-  loading: { getItems: true },
+  loading: { getItems: false },
 };
 
 const getters = {

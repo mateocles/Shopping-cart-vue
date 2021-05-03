@@ -2,13 +2,13 @@
   <div class="nav-bar">
     <b-row>
       <b-col class="contend">
-        <a class="nav-logo" href="/">
+        <router-link class="nav-logo"  to="/">
           <img
             src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.14.4/mercadolibre/logo__large_plus.png"
             alt="logo mercado libre"
             class="logo"
           />
-        </a>
+         </router-link>
       </b-col>
       <b-col cols="6"
         ><b-row class="contend">

@@ -20,12 +20,12 @@
             <b-button
               v-if="type == 'listProduct'"
               variant="primary"
-              @click="addProduct(item)"
+              @click="add(item)"
               >Agregar al carrito</b-button
             ><b-button
               v-if="type == 'cart'"
               variant="danger"
-              @click="deletProduct(item)"
+              @click="delet(item)"
               >Eliminar al carrito</b-button
             >
           </b-col>
@@ -44,12 +44,24 @@ export default {
     type: String,
   },
   methods: {
-    ...mapActions("Cart", ["addProduct"]),
-    addProduct(data) {
-      console.log(data);
+    ...mapActions("Cart", ["addProduct", "deletProduct"]),
+    add(data) {
+      this.noti(data, "success", "Se ha agregado");
+      this.addProduct(data);
     },
-    deletProduct(data) {
-      console.log(data);
+    delet(data) {
+      this.noti(data, "danger", "Se ha eliminado");
+      this.deletProduct(data);
+    },
+    noti(data, type, text) {
+      this.$bvToast.toast(
+        `Nombre: ${data.title}, Precio: ${data.prices.prices[0].amount}`,
+        {
+          title: `${text} un producto en el carrito`,
+          variant: type,
+          solid: true,
+        }
+      );
     },
   },
 };

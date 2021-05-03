@@ -1,4 +1,3 @@
-
 const state = {
   productsCart: [],
   loading: { getItems: false },
@@ -18,7 +17,10 @@ const getters = {
 
 const actions = {
   addProduct({ commit }, payload) {
-    commit("addProductResponse",payload)
+    commit("addProductResponse", payload);
+  },
+  deletProduct({ commit }, payload) {
+    commit("deletProductResponse", payload);
   },
 };
 
@@ -28,6 +30,11 @@ const mutations = {
   },
   addProductResponse(state, data) {
     state.productsCart.push(data);
+    localStorage.setItem("cart", JSON.stringify(state.productsCart));
+  },
+  deletProductResponse(state, data) {
+    var i = state.productsCart.indexOf(data);
+    state.productsCart.splice(i, 1);
   },
 };
 

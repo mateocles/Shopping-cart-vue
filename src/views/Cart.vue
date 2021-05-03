@@ -3,13 +3,14 @@
     <div v-if="productsCart.length > 0" class="contend-page">
       <b-row>
         <b-col md="6" offset-md="3"
-          ><div v-for="(data, i) in items" :key="i">
+          ><div v-for="(data, i) in productsCart" :key="i">
             <Card :item="data" type="cart" /></div
         ></b-col>
       </b-row>
+
     </div>
     <div v-else class="contend-page">
-      <Error msg="No encontro ningun producto en el carrito" />
+      <Error msg="No se encontro productos en el carrito" />
     </div>
   </div>
 </template>

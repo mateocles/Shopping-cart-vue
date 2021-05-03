@@ -22,7 +22,7 @@
         </b-row>
       </div>
       <div v-else class="contend-page">
-        <Error msg="No encontro ningun producto" />
+        <Error msg="Realice la busqueda para iniciar" />
       </div>
     </b-skeleton-wrapper>
   </div>
