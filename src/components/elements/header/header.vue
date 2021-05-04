@@ -40,7 +40,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  name: "Search",
+  name: "Header",
   data() {
     return {
       searchInput: "",
@@ -53,6 +53,7 @@ export default {
     ...mapActions("Products", ["getProducts"]),
     searchProduct() {
       if (this.searchInput != "") {
+        /* el router esta ahi para cuando se realice una busqueda vaya al home y muestre el resultado */
         this.$router.push({ path: "/" }).catch(() => {});
         this.getProducts(this.searchInput);
       }

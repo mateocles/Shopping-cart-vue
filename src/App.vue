@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header />
+    <!-- En el encabezado esta el campo de busqueda y icono de carrito -->
+    <Header /> 
     <router-view />
   </div>
 </template>
@@ -14,6 +15,7 @@ export default {
     Header,
   },
   created() {
+    /* Se creo este codigo con el fin de que cuando la pagina realice un reloap, recuperar los datos del carrito y no perderlos */
     var payload = localStorage.getItem("cart");
     if (payload) {
       this.reloadApp(JSON.parse(payload));
@@ -32,7 +34,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-
 #nav {
   padding: 30px;
 }

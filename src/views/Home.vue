@@ -1,5 +1,6 @@
 <template>
   <div class="contend">
+    <!-- se realizo es componente pensando en un futuro instaciar componentes dinamicos -->
     <component :is="componentName" />
   </div>
 </template>
