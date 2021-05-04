@@ -15,7 +15,7 @@ export default {
     Header,
   },
   created() {
-    /* Se creo este codigo con el fin de que cuando la pagina realice un reloap, recuperar los datos del carrito y no perderlos */
+    /* Se creo este codigo con el fin de que cuando la pagina realice un reload, recupe los datos del carrito en localstore */
     var payload = localStorage.getItem("cart");
     if (payload) {
       this.reloadApp(JSON.parse(payload));

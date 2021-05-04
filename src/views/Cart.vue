@@ -8,6 +8,7 @@
         ></b-col>
         <b-col md="6" offset-md="3">
           <div>
+            <!-- la suma total del carrito -->
             <Total :item="productsCart" />
           </div>
         </b-col>
