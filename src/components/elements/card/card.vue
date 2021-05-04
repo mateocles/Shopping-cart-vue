@@ -1,35 +1,22 @@
 <template>
   <b-card class="card">
     <b-row>
+      <b-col md="4">
+        <img height="160px" width="160px" :src="item.thumbnail" alt="arrow" />
+      </b-col>
       <b-col>
-        <b-row>
-          <b-col md="4">
-            <img
-              height="160px"
-              width="160px"
-              :src="item.thumbnail"
-              alt="arrow"
-            />
-          </b-col>
-          <b-col>
-            <p>{{ item.title }}</p>
-            <span class="price"
-              ><span>$</span
-              ><span>{{ item.prices.prices[0].amount }}</span></span
-            >
-            <b-button
-              v-if="type == 'listProduct'"
-              variant="primary"
-              @click="add(item)"
-              >Agregar al carrito</b-button
-            ><b-button
-              v-if="type == 'cart'"
-              variant="danger"
-              @click="delet(item)"
-              >Eliminar al carrito</b-button
-            >
-          </b-col>
-        </b-row>
+        <p>{{ item.title }}</p>
+        <span class="price"
+          ><span>$</span><span>{{ item.prices.prices[0].amount }}</span></span
+        >
+        <b-button
+          v-if="type == 'listProduct'"
+          variant="primary"
+          @click="add(item)"
+          >Agregar al carrito</b-button
+        ><b-button v-if="type == 'cart'" variant="danger" @click="delet(item)"
+          >Eliminar al carrito</b-button
+        >
       </b-col>
     </b-row>
   </b-card>
@@ -66,19 +53,9 @@ export default {
   },
 };
 </script>
-
 <style scoped>
-.button {
-  text-align: end;
-}
-.card-row {
-  padding-top: 10px;
-}
 .p {
   padding-top: 10px;
-}
-.contend-btn {
-  padding-top: 5px;
 }
 .card {
   min-width: 0;

@@ -1,13 +1,17 @@
 <template>
   <div class="contend-page">
-    <div v-if="productsCart.length > 0" class="contend-page">
+    <div v-if="productsCart.length > 0">
       <b-row>
         <b-col md="6" offset-md="3"
           ><div v-for="(data, i) in productsCart" :key="i">
             <Card :item="data" type="cart" /></div
         ></b-col>
+        <b-col md="6" offset-md="3">
+          <div>
+            <Total :item="productsCart" />
+          </div>
+        </b-col>
       </b-row>
-
     </div>
     <div v-else class="contend-page">
       <Error msg="No se encontro productos en el carrito" />
@@ -19,11 +23,13 @@
 import { mapGetters } from "vuex";
 import Card from "@/components/elements/card/card.vue";
 import Error from "@/components/elements/error/error.vue";
+import Total from "@/components/elements/total/total.vue";
 export default {
   name: "ListProducts",
   components: {
     Card,
     Error,
+    Total,
   },
   data() {
     return {

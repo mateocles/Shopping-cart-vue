@@ -18,6 +18,7 @@ export default {
   },
   methods: {
     ...mapActions("Products", ["getProducts"]),
+    ...mapActions("Cart", ["reloadApp"]),
   },
 };
 </script>

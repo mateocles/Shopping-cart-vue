@@ -22,7 +22,7 @@
         </b-row>
       </div>
       <div v-else class="contend-page">
-        <Error msg="Realice la busqueda para iniciar" />
+        <Error msg="Para iniciar realice una busqueda de un producto" />
       </div>
     </b-skeleton-wrapper>
   </div>

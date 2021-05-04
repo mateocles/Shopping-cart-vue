@@ -1,16 +1,26 @@
 <template>
   <div id="app">
-    <Search />
+    <Header />
     <router-view />
   </div>
 </template>
 
 <script>
-import Search from "@/components/elements/search/Search.vue";
+import { mapActions } from "vuex";
+import Header from '@/components/elements/header/header.vue';
 export default {
   name: "App",
   components: {
-    Search,
+    Header,
+  },
+  created() {
+    var payload = localStorage.getItem("cart");
+    if (payload) {
+      this.reloadApp(JSON.parse(payload));
+    }
+  },
+  methods: {
+    ...mapActions("Cart", ["reloadApp"]),
   },
 };
 </script>
@@ -26,5 +36,4 @@ export default {
 #nav {
   padding: 30px;
 }
-
 </style>

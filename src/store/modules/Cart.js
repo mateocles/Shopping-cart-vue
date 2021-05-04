@@ -22,11 +22,17 @@ const actions = {
   deletProduct({ commit }, payload) {
     commit("deletProductResponse", payload);
   },
+  reloadApp({commit},payload){
+    commit("reloadApp",payload)
+  }
 };
 
 const mutations = {
   loading(state, payload) {
     state.loading.getItems = payload;
+  },
+  reloadApp(state, payload) {
+    state.productsCart = payload;
   },
   addProductResponse(state, data) {
     state.productsCart.push(data);
@@ -35,6 +41,7 @@ const mutations = {
   deletProductResponse(state, data) {
     var i = state.productsCart.indexOf(data);
     state.productsCart.splice(i, 1);
+    localStorage.setItem("cart", JSON.stringify(state.productsCart));
   },
 };
 
